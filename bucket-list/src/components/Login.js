@@ -5,25 +5,38 @@ import styled from 'styled-components';
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 30%;
     border: 1px solid red;
     align-items: center;
     margin: 10px auto;
 `
 
 const Input = styled.input`
-    width: 10%;
-    padding: 3px;
-    
+    width: 80%;
+    padding: 4px;
     margin: 10px;
+    border: none;
+    border-bottom: 2px solid #a5c3c6;
+    color: #454245;
+    font-size: 1.2rem;
+    text-align: center;
 `
 
 const Button = styled.button`
-    width: 10%;
+    width: 80%;
     font-size: 1rem;
     margin: 10px;
-`
+    padding: 4px;
+    border: none;
+    font-size: 1.2rem;
+    background: #dfcdc4;
 
+    &:hover{
+        background: #a5c3c6;
+    }
+`
+// .btn-grad {background-image: linear-gradient(to right, #a49989 0%, #d2cdc4 51%, #a49989 100%)}
+// .btn-grad:hover { background-position: right center; }
 class Login extends React.Component {
     state = {
         credentials : {

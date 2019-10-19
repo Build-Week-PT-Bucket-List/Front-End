@@ -11,6 +11,13 @@ tan: #a49989
 sand: #d2cdc4
 light sand: #e3e2e0
 */
+* {
+  color: #454245;
+}
+
+body {
+  background-color: #dde8ec;
+}
 
 .App {
   text-align: center;
