@@ -1,5 +1,28 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js';
+import styled from 'styled-components';
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    border: 1px solid red;
+    align-items: center;
+    margin: 10px auto;
+`
+
+const Input = styled.input`
+    width: 10%;
+    padding: 3px;
+    
+    margin: 10px;
+`
+
+const Button = styled.button`
+    width: 10%;
+    font-size: 1rem;
+    margin: 10px;
+`
 
 class Login extends React.Component {
     state = {
@@ -32,25 +55,27 @@ class Login extends React.Component {
     render() {
         return (
             <>
-                <form onSubmit={this.login}>
+                <Form onSubmit={this.login}>
 
-                    <input
+                    <Input
                     type="text"
                     name="email"
                     placeholder="email"
+                    autoComplete='email'
                     value={this.state.credentials.email}
                     onChange={this.handleChange}
                     />
 
-                    <input
+                    <Input
                     type='password'
                     name='password'
                     placeholder='password'
+                    autoComplete='current-password'
                     value={this.state.credentials.password}
                     onChange={this.handleChange}
                     />
-                    <button>Log In</button>
-                </form>
+                    <Button>Log In</Button>
+                </Form>
             </>
         )
     }
