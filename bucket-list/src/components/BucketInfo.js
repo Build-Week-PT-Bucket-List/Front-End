@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import {axiosWithAuth} from '../utils/axiosWithAuth';
 import BucketItemCard from './BucketItemCard';
 
 
-const BucketInfo = (props) => {
+const BucketInfo = () => {
     const [items, setItems] = useState([])
   
     useEffect(() => {
 
-      axios
-        .get('https://bw-pt-bucket-list.herokuapp.com/api')
+      axiosWithAuth ()
+        .get('/item')
         .then(res => {
           console.log('item data:', res.data.results);
           setItems(res.data.results);
