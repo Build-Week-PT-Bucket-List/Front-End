@@ -17,7 +17,7 @@ const BucketInfo = (props) => {
         .catch(error => {
           console.error(error);
         });
-    }, [props.match.params.id]);
+    }, []);
 
  if (!items) {
     return <div>Loading Bucket List information...</div>;

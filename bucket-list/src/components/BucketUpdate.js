@@ -15,7 +15,7 @@ box-shadow: 5px 5px 5px black;
 `
 ;
 
-const BucketUpdate = (props) => {
+const BucketUpdate = () => {
     const initialNote ={ note: ""};
 
     const [ newNote, setNewNote] = useState(initialNote);
