@@ -29,6 +29,7 @@ const Button = styled.button`
     font-size: 1.2rem;
     background: #dfcdc4;
 
+    
     &:hover{
         background: #a5c3c6;
     }
