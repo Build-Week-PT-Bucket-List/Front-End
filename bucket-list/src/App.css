@@ -1,22 +1,25 @@
+/*
+Fonts:
+Headings: 'Montserrat', sans-serif;
+Body: 'Roboto', sans-serif;
+
+Colors:
+dark brown: #454245
+sea green: #a5c3c6
+pale blue: #dde8ec
+tan: #a49989
+sand: #d2cdc4
+light sand: #e3e2e0
+*/
+
+* {
+  color: #454245;
+}
+
+body {
+  background-color: #dde8ec;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
 }
