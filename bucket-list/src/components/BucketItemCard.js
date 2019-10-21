@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState }  from 'react';
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
-
+const ItemCard = styled.div`
+    margin-bottom: 10px;
+    width: 30%;
+    background-color: slategray;
+`
 
 const BucketItemCard = (props) => {
-    const itemData = props.itemData;
+    const item = props.item;
+    const [checked, setChecked] = useState(true);
+    console.log(item);
+    //TODO possible api call to get number of posts or other data?      
 
+    const handleClick = (event) => {
+        setChecked(!item.completed);
+        item.completed = checked;
+        console.log(item.completed)
+    }
+    // TODO set item.complete using hook or API?    
 
     return (
-        <>
-        {itemData.map(item => {
-            return (
-            <div>
-                <h1>User:{item.user}</h1>
-                <h2>BucketList: {item.name}</h2>
-                <h2>Items {item.items}</h2>
-                </div>
-            );
-        })},
-        </>
+        <ItemCard>
+            <h2>{item.description}</h2>
+            <label>Complete:
+                <input type="checkbox" defaultChecked={item.completed} name="complete" value="completed" onClick={handleClick}/>
+            </label>
+            <p>Posts: {item.id}</p>
+            <Link to={`/details/${item.id}`}>Details</Link>
+        </ItemCard>
     );
 };
- export default BucketItemCard
+
+export default BucketItemCard

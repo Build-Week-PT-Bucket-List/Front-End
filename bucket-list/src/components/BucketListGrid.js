@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import {axiosWithAuth} from '../utils/axiosWithAuth.js'
 import styled from 'styled-components';
-// import BucketItemCard from "BucketItemCard.js";
+import BucketItemCard from "./BucketItemCard.js";
 
 const Grid = styled.section`
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: space-around;
 `
 
 function BucketListGrid(props) {
-  const [bucketList, setBucketList] = useState({items: [1, 2, 3, 4, 5]});
+  const [items, setItems] = useState([{
+        "id": 1,
+        "user_id": 1,
+        "completed": false,
+        "description": "Drive a Ferrari",
+        "created": "2019-06-28T15:52:58.870Z"
+      }]);
 
   useEffect(() => {
-    axios.get(`https://bw-pt-bucket-list.herokuapp.com/api/user/${props.uid}/items`)
+    axiosWithAuth()
+      .get(`/posts`)
       .then(res => {
-        console.log(res);
-        setBucketList({items: [1, 2, 3, 4, 5 ,6 ,7]});
+        console.log("BucketListGrid");
+        // setItems(res.data);
+        setItems(res.data);
       })
       .catch(err => console.log(err))
   }, [props.uid])
@@ -23,10 +33,7 @@ function BucketListGrid(props) {
   return (
     <Grid>
       {
-        bucketList.items.map(item => {
-          // return <BucketItemCard key={item.id} item={item} />
-          return <h1 key={item}>{item}</h1>
-        })
+        items.map(item => <BucketItemCard key={item.id} item={item}/>)
       }
     </Grid>
   )
