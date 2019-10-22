@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import BucketInfo from './BucketInfo';
+
 
 const Container = styled.div`
 width: 200px;
@@ -46,7 +46,7 @@ const BucketUpdate = () => {
          return (
            
             <Container>
-            <BucketInfo />
+
              <form onSubmit ={handleSubmit}>
                 <button type ="submit">Update Item</button>
                 <button type ="submit">Delete Item</button>
