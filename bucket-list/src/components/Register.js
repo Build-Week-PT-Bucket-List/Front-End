@@ -1,11 +1,13 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { withRouter } from 'react-router-dom';
 
-class RegisterForm extends React.compontent {
+class RegisterForm extends React.Component {
     state = {
         credentials: {
-            username: '',
-            passowrd: '',
+            name: '',
+            email: '',
+            password: '',
         }
     };
 
@@ -21,10 +23,9 @@ class RegisterForm extends React.compontent {
     login = e => {
         e.preventDefault();
         axiosWithAuth()
-        .post('auth/register', this.state.credentials)
+        .post('/register', this.state.credentials)
         .then(res => {
-            localStorage.setItem('token', res.data.token);
-            this.props.history.push('/protected')
+            this.props.history.push('/login')
         })
         .catch(err => console.log(err));
     };
@@ -36,24 +37,32 @@ class RegisterForm extends React.compontent {
                 <form onSubmit = {this.login}>
                     <input
                     type = 'text'
-                    name = 'username'
-                    value = {this.state.credentials.username}
+                    name = 'name'
+                    value = {this.state.credentials.name}
                     onChange = {this.handleChange}
-                    placeholder = 'password'
+                    placeholder = 'name'
+                    />
+
+                    <input
+                    type = 'email'
+                    name = 'email'
+                    value = {this.state.credentials.email}
+                    onChange = {this.handleChange}
+                    placeholder = 'email'
                     />
 
                     <input
                     type = 'password'
-                    name = 'passowrd'
-                    value = {this.state.credentials.passowrd}
+                    name = 'password'
+                    value = {this.state.credentials.password}
                     onChange = {this.handleChange}
                     placeholder = 'password'
                     />
-                    <button>Register</button>
+                    <button type="submit">Register</button>
                 </form>
             </div>
         );
     }
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);

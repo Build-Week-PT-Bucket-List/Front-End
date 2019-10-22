@@ -8,10 +8,10 @@ const ItemCard = styled.div`
     background-color: slategray;
 `
 
-const BucketItemCard = (props) => {
-    const item = props.item;
+const BucketItemCard = (itemData) => {
+    const item = itemData.item;
     const [checked, setChecked] = useState(true);
-    console.log(item);
+    console.log('itemdata:',item);
     //TODO possible api call to get number of posts or other data?      
 
     const handleClick = (event) => {
