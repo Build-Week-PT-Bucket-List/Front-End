@@ -1,6 +1,6 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js';
-import { Form, Input, Button } from './styles/LoginStyles.js';
+import { Wrapper, Form, Input, Button } from './styles/LoginStyles.js';
 
 class Login extends React.Component {
     state = {
@@ -33,7 +33,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <>
+            <Wrapper>
                 <Form onSubmit={this.login}>
 
                     <Input
@@ -55,7 +55,7 @@ class Login extends React.Component {
                     />
                     <Button>Log In</Button>
                 </Form>
-            </>
+            </Wrapper>
         )
     }
 }
