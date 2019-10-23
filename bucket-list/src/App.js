@@ -1,5 +1,4 @@
 import React from 'react';
-import AddItem from './components/AddItemForm';
 import BucketUpdate from'./components/BucketUpdate';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -15,7 +14,6 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <AddItem />
       <BucketUpdate />
       <RegisterForm />
       <Switch>
