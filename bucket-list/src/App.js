@@ -3,6 +3,7 @@ import AddItem from './components/AddItemForm';
 import BucketUpdate from'./components/BucketUpdate';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+
 import PrivateRoute from './components/PrivateRoute.js';
 import Login from './components/Login.js';
 import Dashboard from './components/Dashboard.js';
@@ -14,7 +15,6 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <h1>Create your Bucket List</h1>
       <AddItem />
       <BucketUpdate />
       <RegisterForm />
