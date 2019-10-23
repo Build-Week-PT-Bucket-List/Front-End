@@ -37,28 +37,16 @@ return (
             <div>
             <br></br>
 
-            {touched.user && errors.user && <p className="error">{errors.user}</p>}
-            <input 
-                type ="text" 
-                name = "user"
-                placeholder ="User Name"
-        
-                />
-    
-            <div>
-                <br></br>
             {touched.name && errors.name && <p className="error">{errors.name}</p>}
             <input 
                 type ="text" 
                 name = "name"
                 placeholder ="Bucket List Name"
-               
-            
-                />
+               />
                 </div>
 
             <div>
-                <br></br>
+            <br></br>
 
             {touched.items && errors.items && <p className="error">{errors.items}</p>}  
             <textarea
@@ -66,12 +54,13 @@ return (
                 name = "items"
                 placeholder ="List Items"
               
-                />
-                </div>
-
+            />
             </div>
+
+            <div>
             <br></br>
             <button type="submit">Add New Bucket List</button>
+            </div>
             <div>
             <button type= "button">
                 Reset

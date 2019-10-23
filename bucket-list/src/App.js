@@ -1,5 +1,4 @@
 import React from 'react';
-import BucketUpdate from'./components/BucketUpdate';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
@@ -14,7 +13,6 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <BucketUpdate />
       <RegisterForm />
       <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
