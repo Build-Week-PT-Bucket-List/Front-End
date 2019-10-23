@@ -3,20 +3,20 @@ import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 import BucketListGrid from './BucketListGrid.js';
 
 const Dashboard = () => {
-    const [uid, setUid] = useState();
+    const [currentUser, setCurrentUser] = useState({});
     useEffect(() => {
       axiosWithAuth()
         .get('user')
         .then(res => {
           console.log("User:", res);
-          setUid(res.data.user.id);
+          setCurrentUser(res.data.user);
         })
         .catch(err => console.log(err))
     }, [])
     return(
         <>
-        <h1>Hello, World!</h1>
-        <BucketListGrid uid={uid}/>
+        <h1>Hello, {currentUser.name}!</h1>
+        <BucketListGrid uid={currentUser.id}/>
         </>
     )
 }
