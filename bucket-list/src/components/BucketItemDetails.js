@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Post from './detail-components/Post.js';
-import BucketUpdate from './components/BucketUpdate';
+import BucketUpdate from './components/BucketUpdate'
 
 
 function BucketItemDetails(props) {

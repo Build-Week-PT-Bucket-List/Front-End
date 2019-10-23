@@ -1,13 +1,20 @@
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+    background: #a5c3c6;
+    display: flex;
+    width: 30%;
+    align-items: center;
+    margin: 0 auto;
+`;
+
 const Form = styled.form`
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 100%;
 
     align-items: center;
-    margin: 10px auto;
-`
+`;
 
 const Input = styled.input`
     width: 80%;
@@ -18,22 +25,15 @@ const Input = styled.input`
     color: #454245;
     font-size: 1.2rem;
     text-align: center;
-`
+`;
 
 const Button = styled.button`
-    // width: 80%;
-    // font-size: 1rem;
-    // margin: 10px;
-    // padding: 4px;
-    // border: none;
-    // font-size: 1.2rem;
-    // background: #dfcdc4;
-
-    color: white;
+    padding: 5px;
+    color: #e3e2e0;
     border-radius: 8px;
-    border: 2px solid #E3E2E0;
-    padding-top: 5px;
-    margin-bottom: 50px;
+    border: 2px solid #e3e2e0;
+
+    margin: 10px;
     height: 35px;
     display: flex;
     align-items: baseline;
@@ -42,9 +42,10 @@ const Button = styled.button`
     &:hover{
         background: #a5c3c6;
     }
-`
+`;
 
 export {
+    Wrapper,
     Form,
     Input,
     Button,

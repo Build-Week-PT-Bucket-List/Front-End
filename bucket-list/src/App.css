@@ -1,4 +1,6 @@
 /*
+meyerweb reset added to index.css
+
 Fonts:
 Headings: 'Montserrat', sans-serif;
 Body: 'Roboto', sans-serif;
@@ -17,9 +19,19 @@ light sand: #e3e2e0
 }
 
 body {
-  background-color: #dde8ec;
+  background-image: url('./images/travel.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
-.App {
-  text-align: center;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
 }

@@ -18,7 +18,7 @@ box-shadow: 5px 5px 5px black;
 `
 ;
 
-const AddItem = ({errors, touched, status}) => {
+const AddItemForm = ({errors, touched, status}) => {
     console.log(status)
     const [newItem, setNewItem] = useState ([])
     
@@ -52,7 +52,7 @@ return (
             <textarea
                 type ="text" 
                 name = "items"
-                placeholder ="List Items"
+                placeholder ="Bucket List Discription"
               
             />
             </div>
@@ -78,7 +78,6 @@ return (
 export default withFormik ({
     mapPropsToValues: (values) => {
         return {
-            user: values.user || '',
             name: values.name || '',
             item: values.item || '', 
         }
@@ -86,20 +85,35 @@ export default withFormik ({
 
     
     validationSchema: yup.object().shape ({
-       user: yup.string().required('Please enter your name'),
         name: yup.string().required(),
         item: yup.string().required(),
     }),
 
+
     handleSubmit: (values, {setStatus}) => {
-
-       axios.post('https://bw-pt-bucket-list.herokuapp.com/api', values)
-       .then((res) => {
-           console.log(res)
-       })
-       .catch((err) => {
-           console.log('Error:', err)
-       })
-    }
-
-}) (AddItem)
+        axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post', values)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log('Error:', err)
+        })
+ 
+         axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/image', values)
+         .then((res) => {
+             console.log(res)
+         })
+         .catch((err) => {
+             console.log('Error:', err)
+         })
+ 
+         
+         axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/video', values)
+         .then((res) => {
+             console.log(res)
+         })
+         .catch((err) => {
+             console.log('Error:', err)
+         })
+     },
+}) (AddItemForm)
