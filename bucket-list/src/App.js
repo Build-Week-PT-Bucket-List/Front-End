@@ -15,14 +15,13 @@ function App() {
     <Router>
     <div className="App">
       <h1>Create your Bucket List</h1>
-      <AddItem />
-      <BucketUpdate />
-      <RegisterForm />
-      <Switch>
+        <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/" component={Login} />
           <Route component={Login} />
         </Switch>
+      <RegisterForm />
+      
     </div>
     </Router>
   );
