@@ -6,13 +6,20 @@ const Dashboard = () => {
     const [currentUser, setCurrentUser] = useState({});
     useEffect(() => {
       axiosWithAuth()
-        .get('user')
+        .get('/user')
         .then(res => {
           console.log("User:", res);
           setCurrentUser(res.data.user);
         })
         .catch(err => console.log(err))
     }, [])
+
+    if (!currentUser.name) {
+      return (
+        <h1>Loading User...</h1>
+      )
+    }
+    
     return(
         <>
         <h1>Hello, {currentUser.name}!</h1>
