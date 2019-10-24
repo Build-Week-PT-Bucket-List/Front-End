@@ -28,7 +28,12 @@ class RegisterForm extends React.Component {
         .post('/register', this.state.credentials)
         .then(res => {
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/login')
+            this.props.history.push('/login');
+            this.setState({ credentials: {
+                name: '',
+                email: '',
+                password: '',
+            } });
         })
         .catch(err => console.log(err));
     };
