@@ -8,9 +8,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
 border: .5px solid #454245;
+background-color: #454245;
 width: 200px;
-padding-bottom: 1%;
-margin-left: 42%;
+padding: 3%;
+margin-left:20%;
 margin-top: 4%;
 border-top: 30px solid #A5C3C6;
 border-radius: 5%;
@@ -43,6 +44,7 @@ return (
                 placeholder ="Bucket List Description"
                />
             </div>
+          
 
             <div>
             <br></br>
@@ -78,10 +80,11 @@ return (
             <br></br>
             <button type="submit">Add New Bucket List</button>
             </div>
+
+
             <div>
-            <button type= "button">
-                Reset
-            </button>
+            <br></br>
+            <button type= "button">Reset</button>
             </div>
 
             {newItem.map((newItem) => ( 

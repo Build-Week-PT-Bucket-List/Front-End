@@ -10,9 +10,15 @@ import {Route} from 'react-router-dom';
 
 
 const Container = styled.div`
-    background-color: #A49989;
-    `;
+  background-color: #A49989;
+  `
+  ;
 
+const StyledHeading = styled.h1`
+  font-size:20px;
+  padding-left: 25%;
+  `
+  ;
 
 const Dashboard = () => {
     const [currentUser, setCurrentUser] = useState({});
@@ -29,6 +35,7 @@ const Dashboard = () => {
     if (!currentUser.name) {
       return (
         <h1>Loading User...</h1>
+
       )
     }
     
@@ -37,7 +44,10 @@ const Dashboard = () => {
         <Header />
         <Route exact path = "/dashboard">
         <Container>
+          <br></br>
+          <StyledHeading>
             <h1>Hello, {currentUser.name}!</h1>
+            </StyledHeading>
             <AddItemForm currentUser = {currentUser}/>
             <BucketListGrid uid={currentUser.id}/>
         </Container>
