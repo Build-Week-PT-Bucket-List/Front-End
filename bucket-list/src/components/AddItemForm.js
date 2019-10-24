@@ -58,7 +58,7 @@ return (
             <br></br>
             {touched.image && errors.image && <p className="error">{errors.image}</p>}  
             <textarea
-                type ="text" 
+                type = "url"
                 name = "image"
                 placeholder ="Bucket List Image(s)"
                 />
@@ -68,7 +68,7 @@ return (
             <br></br>
             {touched.video && errors.video && <p className="error">{errors.video}</p>}  
             <textarea
-                type ="text" 
+                type = "url"
                 name = "video"
                 placeholder ="Bucket List Video"
                 />
