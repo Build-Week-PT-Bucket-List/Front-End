@@ -1,6 +1,4 @@
 import React from 'react';
-import AddItem from './components/AddItemForm';
-import BucketUpdate from'./components/BucketUpdate';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute.js';
@@ -14,6 +12,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+
       <h1 className="pageTitle">BucketArr</h1>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />

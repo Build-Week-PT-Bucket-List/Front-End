@@ -18,7 +18,7 @@ box-shadow: 5px 5px 5px black;
 `
 ;
 
-const AddItem = ({errors, touched, status}) => {
+const AddItemForm = ({errors, touched, status, currentUser}) => {
     console.log(status)
     const [newItem, setNewItem] = useState ([])
     
@@ -29,49 +29,55 @@ const AddItem = ({errors, touched, status}) => {
         }
         }, [newItem, status])
    
-
+console.log(currentUser.id)
 return (
        <Container>
         
             <form>
             <div>
             <br></br>
-
-            {touched.user && errors.user && <p className="error">{errors.user}</p>}
+            {touched.item && errors.item && <p className="error">{errors.item}</p>}
             <input 
                 type ="text" 
-                name = "user"
-                placeholder ="User Name"
-        
-                />
-    
-            <div>
-                <br></br>
-            {touched.name && errors.name && <p className="error">{errors.name}</p>}
-            <input 
-                type ="text" 
-                name = "name"
-                placeholder ="Bucket List Name"
-               
-            
-                />
-                </div>
+                name = "item"
+                placeholder ="Bucket List Description"
+               />
+            </div>
 
             <div>
-                <br></br>
-
-            {touched.items && errors.items && <p className="error">{errors.items}</p>}  
+            <br></br>
+            {touched.post && errors.post && <p className="error">{errors.post}</p>}  
             <textarea
                 type ="text" 
-                name = "items"
-                placeholder ="List Items"
-              
+                name = "post"
+                placeholder ="Bucket List Message"
                 />
-                </div>
-
             </div>
+
+            <div>
+            <br></br>
+            {touched.image && errors.image && <p className="error">{errors.image}</p>}  
+            <textarea
+                type ="text" 
+                name = "image"
+                placeholder ="Bucket List Image(s)"
+                />
+            </div>
+
+            <div>
+            <br></br>
+            {touched.video && errors.video && <p className="error">{errors.video}</p>}  
+            <textarea
+                type ="text" 
+                name = "video"
+                placeholder ="Bucket List Video"
+                />
+            </div>
+
+            <div>
             <br></br>
             <button type="submit">Add New Bucket List</button>
+            </div>
             <div>
             <button type= "button">
                 Reset
@@ -89,28 +95,64 @@ return (
 export default withFormik ({
     mapPropsToValues: (values) => {
         return {
-            user: values.user || '',
-            name: values.name || '',
-            item: values.item || '', 
+            item: values.item || '',
+            post: values.post || '', 
+            image: values.image || '',
+            video: values.video || ''
         }
     }, 
 
     
     validationSchema: yup.object().shape ({
-       user: yup.string().required('Please enter your name'),
-        name: yup.string().required(),
         item: yup.string().required(),
+        post: yup.string().required(),
     }),
 
-    handleSubmit: (values, {setStatus}) => {
 
-       axios.post('https://bw-pt-bucket-list.herokuapp.com/api', values)
-       .then((res) => {
-           console.log(res)
-       })
-       .catch((err) => {
-           console.log('Error:', err)
-       })
-    }
-
-}) (AddItem)
+    handleSubmit: (values, {setStatus, props}) => {
+        const itemObject = {
+            "user_id": props.currentUser.id,
+			"completed": false,
+			"description": values.description
+        }
+        axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item', itemObject )
+        .then ((item) => {
+            const postObject = {
+                "item_id": item.id,
+				"message": values.message
+		    }
+            axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post', postObject)
+            .then((post) => {
+             const imageObject = {
+                 
+				"post_id": post.id,
+				"photo": values.photo
+             }  
+             axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/image', imageObject)
+             .then((res) => {
+                 console.log(res)
+             })
+             .catch((err) => {
+                 console.log('Error:', err)
+             })
+             const videoObject ={ 
+                "post_id": post.id,
+				"video": values.video
+             }
+             axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/video', videoObject)
+             .then((res) => {
+                 console.log(res)
+             })
+             .catch((err) => {
+                 console.log('Error:', err)
+             })
+            })
+            .catch((err) => {
+                console.log('Error:', err)
+            })
+     
+        })
+        .catch()
+       
+    },
+}) (AddItemForm)

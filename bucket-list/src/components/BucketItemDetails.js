@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import styled from 'styled-components';
 import Post from './detail-components/Post.js';
+import BucketUpdate from './components/BucketUpdate'
+
 
 function BucketItemDetails(props) {
   const [posts, setPosts] = useState([{id:1, title:"One"},{id:2, title: "Two"}]);
@@ -23,6 +24,7 @@ function BucketItemDetails(props) {
           posts.map(post => <Post key={post.id} post={post} />)
         }
       </section>
+      <BucketUpdate itemID = {props.itemID} />
   </div>
   )
 }

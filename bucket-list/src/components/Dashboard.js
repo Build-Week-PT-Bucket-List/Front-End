@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import Header from './Header';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js';
-import BucketListGrid from './BucketListGrid.js';
+import AddItemForm from './AddItemForm';
+import BucketListGrid from './BucketListGrid';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    background-color: #A49989;
+    `;
+
 
 const Dashboard = () => {
     const [currentUser, setCurrentUser] = useState({});
@@ -22,8 +30,12 @@ const Dashboard = () => {
     
     return(
         <>
-        <h1>Hello, {currentUser.name}!</h1>
-        <BucketListGrid uid={currentUser.id}/>
+        <Header />
+        <Container>
+            <h1>Hello, {currentUser.name}!</h1>
+            <AddItemForm currentUser = {currentUser}/>
+            <BucketListGrid uid={currentUser.id}/>
+        </Container>
         </>
     )
 }

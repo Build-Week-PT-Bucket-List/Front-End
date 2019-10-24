@@ -27,6 +27,7 @@ class RegisterForm extends React.Component {
         axiosWithAuth()
         .post('/register', this.state.credentials)
         .then(res => {
+            console.log(res.data)
             localStorage.setItem('token', res.data.token);
             this.props.history.push('/login');
             this.setState({ credentials: {
