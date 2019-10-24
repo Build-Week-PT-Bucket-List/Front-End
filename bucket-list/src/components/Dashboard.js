@@ -3,7 +3,7 @@ import Header from './Header';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 import AddItemForm from './AddItemForm';
 import BucketListGrid from './BucketListGrid';
-import BucketItemDetail from './BucketItemDetail';
+import BucketItemDetails from './BucketItemDetails';
 import styled from 'styled-components';
 import {Route} from 'react-router-dom';
 
@@ -20,7 +20,6 @@ const Dashboard = () => {
       axiosWithAuth()
         .get('/user')
         .then(res => {
-          console.log("User:", res);
           setCurrentUser(res.data.user);
         })
         .catch(err => console.log(err))
@@ -39,10 +38,10 @@ const Dashboard = () => {
         <Container>
             <h1>Hello, {currentUser.name}!</h1>
             <AddItemForm currentUser = {currentUser}/>
-            <BucketListGrid uid={currentUser.id}/>
+            <BucketListGrid uid='1'/>
         </Container>
         </Route>
-        <Route path = "/dashboard/details" component = {BucketItemDetail} />
+        <Route path = "/dashboard/details/:id" component = {BucketItemDetails} />
         </>
 
     )
