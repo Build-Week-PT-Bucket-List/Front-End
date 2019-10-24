@@ -3,8 +3,8 @@ import React from 'react';
 // import styled from 'styled-components';
 
 import Photos from './Photos.js';
-// import Memos from './detail-components';
-// import Videos from './detail-components';
+import Memos from './detail-components';
+import Videos from './detail-components';
 
 function Post(props) {
   const post = props.post;
@@ -12,7 +12,10 @@ function Post(props) {
   return (
     <div className="post">
       <h3>{post.title}</h3>
+      <p>{post.body}</p>
       <Photos postID={post.id}/>
+      <Memos postID={post.id}/>
+      <Videos postID={post.id}/>
     </div>
   )
 }

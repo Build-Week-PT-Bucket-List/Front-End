@@ -11,7 +11,7 @@ function BucketItemDetails(props) {
     axios.get(`https://bw-pt-bucket-list.herokuapp.com/api/item/${props.itemID}/posts`)
       .then(res => {
         console.log(res);
-        setPosts([{id:1, title:"One"},{id:2, title: "Two"}]);
+        setPosts(res.data.posts);
       })
       .catch(err => console.log(err))
   }, [props.itemID]);
