@@ -14,14 +14,12 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <h1>Create your Bucket List</h1>
+      <h1 className="pageTitle">BucketArr</h1>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/" component={Login} />
           <Route component={Login} />
         </Switch>
-      <RegisterForm />
-      
     </div>
     </Router>
   );
