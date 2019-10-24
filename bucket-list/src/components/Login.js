@@ -1,6 +1,8 @@
 import React from 'react';
+import RegisterForm from './Register.js';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js';
-import { Wrapper, Form, Input, Button } from './styles/LoginStyles.js';
+import europe from '../images/europe.jpg';
+import { Wrapper, Form, Input, Button, Image } from './styles/LoginStyles.js';
 
 class Login extends React.Component {
     state = {
@@ -33,9 +35,12 @@ class Login extends React.Component {
 
     render() {
         return (
+            <>
             <Wrapper>
+                <Image src={europe} alt="european cliffside village on the sea"></Image>
+            
                 <Form onSubmit={this.login}>
-
+                
                     <Input
                     type="text"
                     name="email"
@@ -56,6 +61,8 @@ class Login extends React.Component {
                     <Button>Log In</Button>
                 </Form>
             </Wrapper>
+            <RegisterForm />
+            </>
         )
     }
 }
