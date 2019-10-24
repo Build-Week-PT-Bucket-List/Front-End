@@ -35,3 +35,16 @@ h5,
 h6 {
   font-family: 'Montserrat', sans-serif;
 }
+
+.pageTitle {
+  font-size: 3rem;
+  color: #e3e2e0;
+  margin: 20px auto;
+  border-top: 3px solid #e3e2e0;
+  border-bottom: 3px solid #e3e2e0;
+  max-width: 250px;
+}
+
+button {
+  font-size: 1.2rem;
+}

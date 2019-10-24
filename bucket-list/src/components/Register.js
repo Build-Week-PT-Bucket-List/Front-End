@@ -1,6 +1,8 @@
 import React from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { withRouter } from 'react-router-dom';
+import hike from '../images/hike1.jpg';
+import { Wrapper, Form, Input, Button, Image } from './styles/RegisterStyles.js';
 
 class RegisterForm extends React.Component {
     state = {
@@ -27,17 +29,22 @@ class RegisterForm extends React.Component {
         .then(res => {
             console.log(res.data)
             localStorage.setItem('token', res.data.token);
-            this.props.history.push('/login')
+            this.props.history.push('/login');
+            this.setState({ credentials: {
+                name: '',
+                email: '',
+                password: '',
+            } });
         })
         .catch(err => console.log(err));
     };
 
     render() {
         return (
-            <div className = 'register-form'>
-
-                <form onSubmit = {this.login}>
-                    <input
+            <Wrapper>
+               
+                <Form onSubmit = {this.login}>
+                    <Input
                     type = 'text'
                     name = 'name'
                     value = {this.state.credentials.name}
@@ -45,7 +52,7 @@ class RegisterForm extends React.Component {
                     placeholder = 'name'
                     />
 
-                    <input
+                    <Input
                     type = 'email'
                     name = 'email'
                     value = {this.state.credentials.email}
@@ -53,16 +60,17 @@ class RegisterForm extends React.Component {
                     placeholder = 'email'
                     />
 
-                    <input
+                    <Input
                     type = 'password'
                     name = 'password'
                     value = {this.state.credentials.password}
                     onChange = {this.handleChange}
                     placeholder = 'password'
                     />
-                    <button type="submit">Register</button>
-                </form>
-            </div>
+                    <Button type="submit">Register</Button>
+                </Form>
+                <Image src={hike} alt="person standing atop a cliff, overlooking a river below"></Image>
+            </Wrapper>
         );
     }
 }
