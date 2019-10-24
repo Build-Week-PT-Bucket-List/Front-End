@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axiosWithAuth from '../../utils/axiosWithAuth.js';
-import styled from 'styled-components';
+import {axiosWithAuth} from '../../utils/axiosWithAuth.js';
+// import styled from 'styled-components';
 
 function Memo(props) {
   const [memos, setMemos] = useState([]);
@@ -8,20 +8,19 @@ function Memo(props) {
   useEffect(() => {
     axiosWithAuth()
       .get(`item/post/${props.postID}/voices`)
-      .then(res => setVideos(res.data["voice_memo"]))
+      .then(res => setMemos(res.data["voice_memo"]))
       .catch(err => console.log(err))
-  }, [])
+  }, [props.postID])
 
   return (
     <ul>
       {
         memos.map(memo => {
-          <li><a href={memo.url}>{memo.url}</a></li>
+          return <li><a href={memo.url}>{memo.url}</a></li>
         })
       }
       
     </ul>
-      }
   )
 }
 export default Memo;

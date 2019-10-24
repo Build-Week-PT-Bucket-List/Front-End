@@ -3,8 +3,8 @@ import React from 'react';
 // import styled from 'styled-components';
 
 import Photos from './Photos.js';
-import Memos from './detail-components';
-import Videos from './detail-components';
+import Memos from './Memos.js';
+import Videos from './Videos.js';
 
 function Post(props) {
   const post = props.post;

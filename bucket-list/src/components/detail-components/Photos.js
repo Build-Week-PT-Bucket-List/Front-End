@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axiosWithAuth from '../../utils/axiosWithAuth.js';
+import {axiosWithAuth} from '../../utils/axiosWithAuth.js';
 import styled from 'styled-components';
 
 const ImgGrid = styled.section`
@@ -17,11 +17,11 @@ function Photos(props) {
     axiosWithAuth()
       .get(`item/post/${props.postID}/images`)
       .then(res => {
-        console.log(res);
-        setImages(res.data);
+        console.log("images:", res);
+        setImages(res.data.images);
       })
       .catch(err => console.log(err))
-  }, []);
+  }, [props.postID]);
 
   return (
     <ImgGrid className="post-images">
