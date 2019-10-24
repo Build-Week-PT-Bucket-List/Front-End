@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
+import Header from './Header';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js';
-// import AddItemForm from './components/AddItemForm';
-import BucketListGrid from './components/BucketListGrid';
+import AddItemForm from './AddItemForm';
+import BucketListGrid from './BucketListGrid';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -33,7 +33,7 @@ const Dashboard = () => {
         <Header />
         <Container>
             <h1>Hello, {currentUser.name}!</h1>
-            {/* <AddItemForm /> */}
+            <AddItemForm currentUser = {currentUser}/>
             <BucketListGrid uid={currentUser.id}/>
         </Container>
         </>
