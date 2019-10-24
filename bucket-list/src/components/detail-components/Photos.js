@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import axiosWithAuth from '../../utils/axiosWithAuth.js';
 import styled from 'styled-components';
 
 const ImgGrid = styled.section`
@@ -14,10 +14,11 @@ function Photos(props) {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://jsonplaceholder.typicode.com/photos`)
+    axiosWithAuth()
+      .get(`item/post/${props.postID}/images`)
       .then(res => {
         console.log(res);
-        setImages(res.data.slice(0, 3));
+        setImages(res.data);
       })
       .catch(err => console.log(err))
   }, []);
