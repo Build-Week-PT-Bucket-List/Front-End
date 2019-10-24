@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axiosWithAuth from '../../utils/axiosWithAuth.js';
-import styled from 'styled-components';
+import {axiosWithAuth} from '../../utils/axiosWithAuth.js';
+// import styled from 'styled-components';
 
 function Video(props) {
   const [videos, setVideos] = useState([]);
@@ -8,9 +8,9 @@ function Video(props) {
   useEffect(() => {
     axiosWithAuth()
       .get(`item/post/${props.postID}/videos`)
-      .then(res => setVideos(res.data.videos))
+      .then(res => console.log(res))
       .catch(err => console.log(err))
-  }, [])
+  }, [props.postID])
 
   return (
     <ul>
@@ -22,7 +22,6 @@ function Video(props) {
         })
       }
     </ul>
-      }
   )
 }
 export default Video;
