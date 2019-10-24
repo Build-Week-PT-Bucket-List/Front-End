@@ -36,25 +36,42 @@ return (
             <form>
             <div>
             <br></br>
-
-            {touched.name && errors.name && <p className="error">{errors.name}</p>}
+            {touched.item && errors.item && <p className="error">{errors.item}</p>}
             <input 
                 type ="text" 
-                name = "description"
-                placeholder ="Bucket List Name"
+                name = "item"
+                placeholder ="Bucket List Description"
                />
-                </div>
+            </div>
 
             <div>
             <br></br>
-
-            {touched.items && errors.items && <p className="error">{errors.items}</p>}  
+            {touched.post && errors.post && <p className="error">{errors.post}</p>}  
             <textarea
                 type ="text" 
-                name = "items"
-                placeholder ="Bucket List Discription"
-              
-            />
+                name = "post"
+                placeholder ="Bucket List Message"
+                />
+            </div>
+
+            <div>
+            <br></br>
+            {touched.image && errors.image && <p className="error">{errors.image}</p>}  
+            <textarea
+                type ="text" 
+                name = "image"
+                placeholder ="Bucket List Image(s)"
+                />
+            </div>
+
+            <div>
+            <br></br>
+            {touched.video && errors.video && <p className="error">{errors.video}</p>}  
+            <textarea
+                type ="text" 
+                name = "video"
+                placeholder ="Bucket List Video"
+                />
             </div>
 
             <div>
@@ -78,15 +95,17 @@ return (
 export default withFormik ({
     mapPropsToValues: (values) => {
         return {
-            name: values.name || '',
-            item: values.item || '', 
+            item: values.item || '',
+            post: values.post || '', 
+            image: values.image || '',
+            video: values.video || ''
         }
     }, 
 
     
     validationSchema: yup.object().shape ({
-        name: yup.string().required(),
         item: yup.string().required(),
+        post: yup.string().required(),
     }),
 
 
@@ -135,9 +154,5 @@ export default withFormik ({
         })
         .catch()
        
- 
-        
-         
-        
-     },
+    },
 }) (AddItemForm)
