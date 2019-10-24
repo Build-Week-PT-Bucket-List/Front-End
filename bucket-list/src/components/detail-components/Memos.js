@@ -8,7 +8,7 @@ function Memo(props) {
   useEffect(() => {
     axiosWithAuth()
       .get(`item/post/${props.postID}/voices`)
-      .then(res => setMemos(res.data["voice_memo"]))
+      .then(res => console.log(res))
       .catch(err => console.log(err))
   }, [props.postID])
 

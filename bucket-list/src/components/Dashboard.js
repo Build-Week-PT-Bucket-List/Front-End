@@ -20,6 +20,7 @@ const Dashboard = () => {
       axiosWithAuth()
         .get('/user')
         .then(res => {
+          console.log("User:", res);
           setCurrentUser(res.data.user);
         })
         .catch(err => console.log(err))
@@ -38,7 +39,7 @@ const Dashboard = () => {
         <Container>
             <h1>Hello, {currentUser.name}!</h1>
             <AddItemForm currentUser = {currentUser}/>
-            <BucketListGrid uid='1'/>
+            <BucketListGrid uid={currentUser.id}/>
         </Container>
         </Route>
         <Route path = "/dashboard/details/:id" component = {BucketItemDetails} />
