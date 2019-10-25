@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {withFormik, Form, Field} from 'formik';
 import * as yup from 'yup';
-import axios from 'axios';
 import styled from 'styled-components';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js';
 
@@ -20,7 +19,7 @@ box-shadow: 5px 5px 5px black;
 
 const AddItemForm = ({errors, touched, status, currentUser}) => {
     console.log(status)
-    const [newItem, setNewItem] = useState ([])
+    const [newItem] = useState ([])
     
 
     useEffect(()=> {
