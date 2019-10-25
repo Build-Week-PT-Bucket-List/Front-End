@@ -32,6 +32,15 @@ const BucketUpdate = ({ attrs, updateAttr }) => {
         .catch(err => console.log(err))
     };
 
+    const deleteItem = attr => {
+        axiosWithAuth()
+        .delete(`/attrs/${attr.id}`)
+        .then(res => {
+            updateAttr(attrs.filter(data => data.id !== attr.id));
+        })
+        .catch(err => console.log(err));
+    };
+
          return (
             <>
             <div></div>

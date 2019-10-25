@@ -28,7 +28,7 @@ const BucketItemCard = (itemData) => {
                 <input type="checkbox" defaultChecked={item.completed} name="complete" value="completed" onClick={handleClick}/>
             </label>
             <p>Posts: {item.id}</p>
-            <Link to={`/details/${item.id}`}>Details</Link>
+            <Link to={`/dashboard/details/${item.id}`}>Details</Link>
         </ItemCard>
     );
 };

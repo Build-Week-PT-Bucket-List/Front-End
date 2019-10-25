@@ -3,7 +3,11 @@ import Header from './Header';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 import AddItemForm from './AddItemForm';
 import BucketListGrid from './BucketListGrid';
+import BucketItemDetails from './BucketItemDetails';
 import styled from 'styled-components';
+import {Route} from 'react-router-dom';
+
+
 
 const Container = styled.div`
     background-color: #A49989;
@@ -31,12 +35,16 @@ const Dashboard = () => {
     return(
         <>
         <Header />
+        <Route exact path = "/dashboard">
         <Container>
             <h1>Hello, {currentUser.name}!</h1>
             <AddItemForm currentUser = {currentUser}/>
             <BucketListGrid uid={currentUser.id}/>
         </Container>
+        </Route>
+        <Route path = "/dashboard/details/:id" component = {BucketItemDetails} />
         </>
+
     )
 }
 
