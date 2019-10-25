@@ -6,40 +6,40 @@ const initialItem = {
 
 };
 
-const BucketUpdate = ({ attrs, updateAttr }) => {
-    const [editing, setEditing] = useState(false);
-    const [attrToEdit, setAttrToEdit] = useState(initialItem);
+const BucketUpdate = ({ itemID, setItems }) => {
+    // const [editing, setEditing] = useState(false);
+    // const [attrToEdit, setAttrToEdit] = useState(initialItem);
 
-    const editAttr = attr => {
-        setEditing(true);
-        setAttrToEdit(attr);
-    };
+    // const editAttr = attr => {
+    //     setEditing(true);
+    //     setAttrToEdit(attr);
+    // };
 
-    const saveEdit = e => {
-        e.preventDefault();
+    // const saveEdit = e => {
+    //     e.preventDefault();
 
-        axiosWithAuth()
-        .put(`/attrs/${attrToEdit.id}`, attrToEdit)
-        .then(res => {
-            updateAttr(
-                attrs.map(attr => {
-                    if (attr.id === attrToEdit.id) {
-                        return attrToEdit;
-                    } else return attr;
-                })
-            )
-        })
-        .catch(err => console.log(err))
-    };
+    //     axiosWithAuth()
+    //     .put(`/attrs/${attrToEdit.id}`, attrToEdit)
+    //     .then(res => {
+    //         setItems(
+    //             attrs.map(attr => {
+    //                 if (itemID === attrToEdit.id) {
+    //                     return attrToEdit;
+    //                 } else return attr;
+    //             })
+    //         )
+    //     })
+    //     .catch(err => console.log(err))
+    // };
 
-    const deleteItem = attr => {
-        axiosWithAuth()
-        .delete(`/attrs/${attr.id}`)
-        .then(res => {
-            updateAttr(attrs.filter(data => data.id !== attr.id));
-        })
-        .catch(err => console.log(err));
-    };
+    // const deleteItem = item => {
+    //     axiosWithAuth()
+    //     .delete(`/item/${itemID}`)
+    //     .then(res => {
+    //         setItems(items.filter(data => data.id !== itemID));
+    //     })
+    //     .catch(err => console.log(err));
+    // };
 
          return (
             <>
