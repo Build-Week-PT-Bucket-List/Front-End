@@ -1,79 +1,51 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
+import { axiosWithAuth } from '../utils/axiosWithAuth.js';
 
 
-const Container = styled.div`
-width: 200px;
-padding-top:2%;
-padding-bottom: 1%;
-margin-left: 42%;
-margin-top: 4%;
-border: .5px solid #454245;
-border-top: 30px solid #A5C3C6;
-border-radius: 5%;
-box-shadow: 5px 5px 5px black;
-`
-;
+const initialItem = {
 
-const BucketUpdate = () => {
-    const initialNote ={ note: ""};
+};
 
-    const [ newNote, setNewNote] = useState(initialNote);
-    
+const BucketUpdate = ({ itemID, setItems }) => {
+    // const [editing, setEditing] = useState(false);
+    // const [attrToEdit, setAttrToEdit] = useState(initialItem);
 
-    const handleTextChange = event => {
-        setNewNote({
-            ...newNote,
-            [event.target.name]: event.target.value 
-        });
-    };
+    // const editAttr = attr => {
+    //     setEditing(true);
+    //     setAttrToEdit(attr);
+    // };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(newNote);
+    // const saveEdit = e => {
+    //     e.preventDefault();
 
-        resetForm(event);
-    };
+    //     axiosWithAuth()
+    //     .put(`/attrs/${attrToEdit.id}`, attrToEdit)
+    //     .then(res => {
+    //         setItems(
+    //             attrs.map(attr => {
+    //                 if (itemID === attrToEdit.id) {
+    //                     return attrToEdit;
+    //                 } else return attr;
+    //             })
+    //         )
+    //     })
+    //     .catch(err => console.log(err))
+    // };
 
-    const resetForm = event => {
-        event.preventDefault();
-        setNewNote(initialNote);
-    }
-
-
-
+    // const deleteItem = item => {
+    //     axiosWithAuth()
+    //     .delete(`/item/${itemID}`)
+    //     .then(res => {
+    //         setItems(items.filter(data => data.id !== itemID));
+    //     })
+    //     .catch(err => console.log(err));
+    // };
 
          return (
-           
-            <Container>
-
-             <form onSubmit ={handleSubmit}>
-                <button type ="submit">Update Item</button>
-                <button type ="submit">Delete Item</button>
-        
-             <div>
-                <br></br>
-                <textarea 
-                type = "text"
-                name ="notes" 
-                placeholder ="Add Notes"
-                onChange = {handleTextChange} 
-                value = {newNote.notes}
-                />
-            </div>
-                <button type ="submit">Save Notes</button>
-           </form>
-
-           <div>
-                <button type ="button" onClick={resetForm}>
-                 Reset
-                 </button>
-    
-           </div>
-           </Container>
-
+            <>
+            <div></div>
+            </>
        );
     };
     
-    export default BucketUpdate;  
-
+    export default BucketUpdate;
