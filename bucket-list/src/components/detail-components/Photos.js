@@ -17,6 +17,7 @@ function Photos(props) {
     axiosWithAuth()
       .get(`item/post/${props.postID}/images`)
       .then(res => {
+        console.log("images:", res.data.images)
         setImages(res.data.images);
       })
       .catch(err => console.log(err))
@@ -26,7 +27,7 @@ function Photos(props) {
     <ImgGrid className="post-images">
       {
         images.map(image => {
-          return <ImgCard key={image.id} className="post-img" src={image.url} alt={image.title} />
+          return <ImgCard key={image.id} className="post-img" src={image.photo} alt={image.title} />
         })
       }
     </ImgGrid>  )
