@@ -6,7 +6,9 @@ const ItemCard = styled.div`
     margin-bottom: 10px;
     width: 30%;
     background-color: slategray;
+    padding: 3%;
 `
+;
 
 const BucketItemCard = (itemData) => {
     const item = itemData.item;
