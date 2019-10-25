@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {withFormik} from 'formik';
+import {withFormik, Form, Field} from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import styled from 'styled-components';
-
-
+import { axiosWithAuth } from '../utils/axiosWithAuth.js';
 
 const Container = styled.div`
 border: .5px solid #454245;
@@ -26,21 +25,22 @@ const AddItemForm = ({errors, touched, status, currentUser}) => {
 
     useEffect(()=> {
         if(status) {
-            setNewItem([...newItem, status])
+        console.log('hello')
         }
-        }, [newItem, status])
+        }, [status])
    
-console.log(currentUser.id)
-return (
-       <Container>
+        console.log(currentUser.id)
+        return (
+            <Container>
         
-            <form>
+            <Form>
             <div>
             <br></br>
-            {touched.item && errors.item && <p className="error">{errors.item}</p>}
-            <input 
+            {touched.description && errors.description && <p className="error">{errors.description}</p>}
+            <Field 
+            component = 'input'
                 type ="text" 
-                name = "item"
+                name = "description"
                 placeholder ="Bucket List Description"
                />
             </div>
@@ -48,20 +48,22 @@ return (
 
             <div>
             <br></br>
-            {touched.post && errors.post && <p className="error">{errors.post}</p>}  
-            <textarea
+            {touched.message && errors.message && <p className="error">{errors.message}</p>}  
+            <Field
+            component='textArea'
                 type ="text" 
-                name = "post"
+                name = "message"
                 placeholder ="Bucket List Message"
                 />
             </div>
 
             <div>
             <br></br>
-            {touched.image && errors.image && <p className="error">{errors.image}</p>}  
-            <textarea
+            {touched.photo && errors.photo && <p className="error">{errors.photo}</p>}  
+            <Field
+            component='textArea'
                 type = "url"
-                name = "image"
+                name = "photo"
                 placeholder ="Bucket List Image(s)"
                 />
             </div>
@@ -69,7 +71,8 @@ return (
             <div>
             <br></br>
             {touched.video && errors.video && <p className="error">{errors.video}</p>}  
-            <textarea
+            <Field
+            component='textArea'
                 type = "url"
                 name = "video"
                 placeholder ="Bucket List Video"
@@ -81,6 +84,8 @@ return (
             <button type="submit">Add New Bucket List</button>
             </div>
 
+            
+
 
             <div>
             <br></br>
@@ -90,7 +95,7 @@ return (
             {newItem.map((newItem) => ( 
                     <div>Name: {newItem.name}</div>
                 ))}
-       </form>
+       </Form>
        </Container>
    );
 };
@@ -98,41 +103,45 @@ return (
 export default withFormik ({
     mapPropsToValues: (values) => {
         return {
-            item: values.item || '',
-            post: values.post || '', 
-            image: values.image || '',
+            description: values.description || '',
+            message: values.message || '', 
+            photo: values.photo || '',
             video: values.video || ''
         }
     }, 
 
     
     validationSchema: yup.object().shape ({
-        item: yup.string().required(),
-        post: yup.string().required(),
+        description: yup.string().required(),
+        message: yup.string().required(),
+        photo: yup.string(),
+        video: yup.string(),
+
     }),
 
 
-    handleSubmit: (values, {setStatus, props}) => {
+    handleSubmit: (values, {setStatus, props, resetForm}) => {
 
         const itemObject = {
             "user_id": props.currentUser.id,
 			"completed": false,
 			"description": values.description
         }
-        axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item', itemObject )
+        axiosWithAuth().post('/item', itemObject )
         .then ((item) => {
+            console.log(item)
             const postObject = {
-                "item_id": item.id,
+                "item_id": item.data.id,
 				"message": values.message
 		    }
-            axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post', postObject)
+            axiosWithAuth().post('/item/post', postObject)
             .then((post) => {
              const imageObject = {
                  
-				"post_id": post.id,
+				"post_id": post.data.id,
 				"photo": values.photo
              }  
-             axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/image', imageObject)
+             axiosWithAuth().post('/item/post/image', imageObject)
              .then((res) => {
                  console.log(res)
              })
@@ -140,10 +149,10 @@ export default withFormik ({
                  console.log('Error:', err)
              })
              const videoObject ={ 
-                "post_id": post.id,
+                "post_id": post.data.id,
 				"video": values.video
              }
-             axios.post('https://bw-pt-bucket-list.herokuapp.com/api/item/post/video', videoObject)
+             axiosWithAuth().post('/item/post/video', videoObject)
              .then((res) => {
                  console.log(res)
              })
@@ -154,9 +163,10 @@ export default withFormik ({
             .catch((err) => {
                 console.log('Error:', err)
             })
+            props.history.push('/dashboard')
      
         })
-        .catch()
-       
+        .catch(err=>console.log(err))
+       resetForm()
     },
 }) (AddItemForm)

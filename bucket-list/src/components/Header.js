@@ -21,6 +21,10 @@ const Header = () => {
     return (
     <Container className ="header">
         <Link to={`../Apps.js`}>HOME</Link>
+        <br></br>
+        <Link to={'/dashboard/additemform'}>ADD NEW ITEM</Link>
+        <br></br>
+        <Link to={'/dashboard'}>DASHBOARD</Link>
         <StyledHeading>
         <h1><center>START LIVING YOUR BEST LIFE TODAY!</center></h1>
         </StyledHeading>
