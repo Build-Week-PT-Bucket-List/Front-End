@@ -11,7 +11,7 @@ function Post(props) {
 
   return (
     <div className="post">
-      <h3>{post.title}</h3>
+      <h3>{post.message}</h3>
       <p>{post.body}</p>
       <Photos postID={post.id}/>
       <Memos postID={post.id}/>

@@ -20,7 +20,7 @@ function Video(props) {
       {
         videos.map(video => {
           return (
-            <li><a href={video.url}>{video.url}</a></li>
+            <li key={video.id}><a href={video.url}>{video.url}</a></li>
           )
         })
       }
