@@ -22,11 +22,12 @@ function BucketItemDetails(props) {
     <div className="details">
       <h2>Details</h2>
       <section className="posts">
-        {
+        {/* {
           posts.map(post => <Post key={post.id} post={post} />)
-        }
+        } */}
+        <BucketUpdate posts={posts} setPosts={setPosts} />
       </section>
-      <BucketUpdate itemID = {props.itemID} />
+      
   </div>
   )
 }
