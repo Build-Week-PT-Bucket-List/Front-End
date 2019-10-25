@@ -8,7 +8,10 @@ function Memo(props) {
   useEffect(() => {
     axiosWithAuth()
       .get(`item/post/${props.postID}/voices`)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log("memos:", res);
+        setMemos(res.data.images);
+      })
       .catch(err => console.log(err))
   }, [props.postID])
 
@@ -19,7 +22,6 @@ function Memo(props) {
           return <li><a href={memo.url}>{memo.url}</a></li>
         })
       }
-      
     </ul>
   )
 }
