@@ -113,6 +113,7 @@ export default withFormik ({
 
 
     handleSubmit: (values, {setStatus, props}) => {
+
         const itemObject = {
             "user_id": props.currentUser.id,
 			"completed": false,

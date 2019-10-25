@@ -46,7 +46,7 @@ const Dashboard = () => {
         <Container>
           <br></br>
           <StyledHeading>
-            <h1>Hello, {currentUser.name}!</h1>
+            <h1>Welcome to your Bucket List, {currentUser.name}!</h1>
             </StyledHeading>
             <AddItemForm currentUser = {currentUser}/>
             <BucketListGrid uid={currentUser.id}/>

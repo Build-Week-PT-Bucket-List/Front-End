@@ -1,36 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 const Container = styled.div`
     padding: 3%;
     background-color: #A5c3c6;
-    border: 1px solid #454245;
-    box-shadow: 5px 5px 5px #A49989;
+    border-bottom: 2px solid #454245;
+    box-shadow: 5px 5px 5px black;
     `
     ;
 
     const StyledHeading = styled.h1`
-    font-size:40px;
-    padding-left:5%;
+    font-size:20px; 
     `
     ;
 
-    const StyledP = styled.p`
-    padding-left:5%;
-    font-size:20px;
-    `
-    ;
-   
+  
 
 const Header = () => {
     return (
     <Container className ="header">
+        <Link to={`../Apps.js`}>HOME</Link>
         <StyledHeading>
-        <h1>BUCKETARR</h1>
+        <h1><center>START LIVING YOUR BEST LIFE TODAY!</center></h1>
         </StyledHeading>
-        <StyledP>
-        <p>Start living your life to the fullest now!</p>
-        </StyledP>
     </Container>
     );
 }
