@@ -35,7 +35,7 @@ function BucketItemDetails(props) {
       <h2>{item.description} Details</h2>
       <section className="posts">
         {
-          posts.map(post => <Post key={post.id} post={post} />)
+          // posts.map(post => <Post key={post.id} post={post} />)
         }
         <BucketUpdate posts={posts} setPosts={setPosts} />
       </section>
