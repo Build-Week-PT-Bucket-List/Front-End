@@ -17,7 +17,6 @@ function Photos(props) {
     axiosWithAuth()
       .get(`item/post/${props.postID}/images`)
       .then(res => {
-        console.log("images:", res);
         setImages(res.data.images);
       })
       .catch(err => console.log(err))

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 import Post from './detail-components/Post.js';
 import BucketUpdate from './BucketUpdate.js'
 
 
 function BucketItemDetails(props) {
-  const [posts, setPosts] = useState([{id:1, title:"One"},{id:2, title: "Two"}]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const id = props.match.params.id;
-    console.log("id:",id);
-    axios.get(`https://bw-pt-bucket-list.herokuapp.com/api/item/${id}/posts`)
+    axiosWithAuth()
+      .get(`/item/${id}/posts`)
       .then(res => {
-        console.log(res);
+        console.log("posts:", res);
         setPosts(res.data.posts);
       })
       .catch(err => console.log(err))

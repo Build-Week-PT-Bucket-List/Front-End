@@ -8,7 +8,10 @@ function Video(props) {
   useEffect(() => {
     axiosWithAuth()
       .get(`item/post/${props.postID}/videos`)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log("videos:", res);
+        setVideos(res.data.images);
+      })
       .catch(err => console.log(err))
   }, [props.postID])
 
