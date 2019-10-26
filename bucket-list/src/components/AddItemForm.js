@@ -40,7 +40,7 @@ const AddItemForm = ({errors, touched, status, currentUser}) => {
             component = 'input'
                 type ="text" 
                 name = "description"
-                placeholder ="Bucket List Description"
+                placeholder ="* Bucket List Description"
                />
             </div>
           
@@ -52,7 +52,7 @@ const AddItemForm = ({errors, touched, status, currentUser}) => {
             component='textArea'
                 type ="text" 
                 name = "message"
-                placeholder ="Bucket List Message"
+                placeholder ="* Message"
                 />
             </div>
 
@@ -63,7 +63,7 @@ const AddItemForm = ({errors, touched, status, currentUser}) => {
             component='textArea'
                 type = "url"
                 name = "photo"
-                placeholder ="Bucket List Image(s)"
+                placeholder ="Image(s)"
                 />
             </div>
 
@@ -74,7 +74,7 @@ const AddItemForm = ({errors, touched, status, currentUser}) => {
             component='textArea'
                 type = "url"
                 name = "video"
-                placeholder ="Bucket List Video"
+                placeholder ="Video"
                 />
             </div>
 

@@ -46,10 +46,9 @@ const Dashboard = () => {
           <br></br>
           <StyledHeading>
             <h1>Welcome to your Bucket List, {currentUser.name}!</h1>
-            </StyledHeading>
-          
-            
+          </StyledHeading>
         </Container>
+        
         <Route exact path = "/dashboard" render={props=><BucketListGrid {...props}uid={currentUser.id}/>}/>
         <Route path = "/dashboard/details/:id" component = {BucketItemDetails} />
         <Route path = "/dashboard/additemform" render={props=><AddItemForm {...props}currentUser = {currentUser}/>}/>
