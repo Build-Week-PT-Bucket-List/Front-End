@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth.js';
-
+import Post from './detail-components/Post.js';
 
 const initialItem = {
 
@@ -43,12 +43,15 @@ const BucketUpdate = ({ posts, setPosts }) => {
 
          return (
             <>
-            {posts.map(post => (
-                <div key={post.id} onClick={() => editPost(post)}>
-                    <button onClick={() => deletePost(post)}>delete post</button>
-                </div>
-            ))}
-            {/* {editing && (
+            {
+            posts.map(post =>
+            <Post key={post.id} post={post} >
+                <h1 onClick={() => editPost(post)}>edit</h1>
+                <button onClick={() => deletePost(post)}>delete post</button>
+            </Post>)
+            }
+
+            {editing && (
                 <form onSubmit={saveEdit}>
                     <legend>edit post</legend>
                     <label>
@@ -61,7 +64,7 @@ const BucketUpdate = ({ posts, setPosts }) => {
                     <button type="submit">save</button>
                     <button onClick={() => setEditing(false)}>cancel</button>
                 </form>
-            )} */}
+            )}
             </>
        );
     };

@@ -44,9 +44,9 @@ const EditVideos = ({ videos, setVideos }) => {
          return (
             <>
             {videos.map(video => (
-                <div key={video.id} onClick={() => editVideo(video)}>
-                    <p>video</p>
-                    <button onClick={() => deleteVideo(video)}>delete video</button>
+                <div className="postEdit" key={video.id} onClick={() => editVideo(video)}>
+                    <button className="videoButton">edit video</button>
+                    <button className="videoButton" onClick={() => deleteVideo(video)}>delete video</button>
                 </div>
             ))}
             {editing && (
@@ -59,8 +59,8 @@ const EditVideos = ({ videos, setVideos }) => {
                         onChange={e => setVideoToEdit({ ...videoToEdit, video: e.target.value})}
                         />
                     </label>
-                    <button type="submit">save</button>
-                    <button onClick={() => setEditing(false)}>cancel</button>
+                    <button className="videoButton" type="submit">save</button>
+                    <button className="videoButton" onClick={() => setEditing(false)}>cancel</button>
                 </form>
             )}
             </>
