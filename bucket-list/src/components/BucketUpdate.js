@@ -48,7 +48,7 @@ const BucketUpdate = ({ posts, setPosts }) => {
                     <button onClick={() => deletePost(post)}>delete post</button>
                 </div>
             ))}
-            {editing && (
+            {/* {editing && (
                 <form onSubmit={saveEdit}>
                     <legend>edit post</legend>
                     <label>
@@ -61,7 +61,7 @@ const BucketUpdate = ({ posts, setPosts }) => {
                     <button type="submit">save</button>
                     <button onClick={() => setEditing(false)}>cancel</button>
                 </form>
-            )}
+            )} */}
             </>
        );
     };
