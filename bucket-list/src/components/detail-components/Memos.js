@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {axiosWithAuth} from '../../utils/axiosWithAuth.js';
-// import styled from 'styled-components';
+
+import EditMemo from './edit-components/EditMemos.js';
 
 function Memo(props) {
   const [memos, setMemos] = useState([]);
@@ -22,6 +23,7 @@ function Memo(props) {
           return <li><a href={memo.url}>{memo.url}</a></li>
         })
       }
+      <EditMemo memos={memos} setMemos={setMemos} />
     </ul>
   )
 }

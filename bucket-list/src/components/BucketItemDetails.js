@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import {axiosWithAuth} from '../utils/axiosWithAuth.js';
 import Post from './detail-components/Post.js';
-import BucketUpdate from './BucketUpdate.js'
+// import BucketUpdate from './BucketUpdate.js';
+import styled from 'styled-components';
 
+const Box = styled.div`
+background: #a5c3c6;
+display: flex;
+width: 60%;
+align-items: center;
+margin: 20px auto;
+
+@media only screen and (max-width: 1024px) {
+    width: 95%;
+  }
+`;
 
 function BucketItemDetails(props) {
   const [posts, setPosts] = useState([]);
@@ -31,16 +43,16 @@ function BucketItemDetails(props) {
   }
 
   return (
-    <div className="details">
-      <h2>{item.description} Details</h2>
+    <Box className="details">
+      <h2>{item.description} details</h2>
       <section className="posts">
         {
-          // posts.map(post => <Post key={post.id} post={post} />)
+           posts.map(post => <Post key={post.id} post={post} />)
         }
-        <BucketUpdate posts={posts} setPosts={setPosts} />
+        {/* <BucketUpdate posts={posts} setPosts={setPosts} /> */}
       </section>
       
-  </div>
+  </Box>
   )
 }
 
