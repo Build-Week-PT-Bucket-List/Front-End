@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {axiosWithAuth} from '../../utils/axiosWithAuth.js';
-import EditVideos from './edit-components/editVideos.js';
+import EditVideos from './edit-components/EditVideos.js';
 
 function Video(props) {
   const [videos, setVideos] = useState([]);

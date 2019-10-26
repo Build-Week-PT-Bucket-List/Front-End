@@ -11,6 +11,7 @@ const ImgGrid = styled.section`
 `
 const ImgCard = styled.img`
   max-width: 300px;
+  margin: 5px 0px;
 `
 function Photos(props) {
   const [images, setImages] = useState([]);

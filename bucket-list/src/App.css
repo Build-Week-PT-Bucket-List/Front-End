@@ -48,3 +48,55 @@ h6 {
 button {
   font-size: 1.2rem;
 }
+
+.postDetails {
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #e3e2e0;
+}
+
+.postMessage {
+  padding: 2px;
+}
+
+.postEdit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imageEdit {
+  flex-direction: column;
+}
+
+.postEdit button {
+  font-size: 1rem;
+  padding: 5px;
+  color: #e3e2e0;
+  border-radius: 8px;
+  border: 2px solid #e3e2e0;
+  margin: 10px;
+  height: 35px;
+  background-color: #454245;
+}
+
+.postEdit button:hover {
+  background: #d2cdc4;
+  color: #454245;
+}
+
+.videoButton {
+  font-size: 1rem;
+  padding: 5px;
+  color: #e3e2e0;
+  border-radius: 8px;
+  border: 2px solid #e3e2e0;
+  margin: 10px;
+  height: 35px;
+  background-color: #454245;
+}
+
+.videoButton button:hover {
+  background: #d2cdc4;
+  color: #454245;
+}

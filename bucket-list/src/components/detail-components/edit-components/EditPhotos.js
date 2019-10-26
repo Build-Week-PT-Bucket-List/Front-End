@@ -44,9 +44,9 @@ const EditPhotos = ({ images, setImages }) => {
          return (
             <>
             {images.map(image => (
-                <div key={image.id} onClick={() => editImage(image)}>
-                    <p>image</p>
-                    {/* <img src={image.photo} alt={image.title} width={"300px"} /> */}
+                <div className="postEdit imageEdit" key={image.id} onClick={() => editImage(image)}>
+                    <button> edit image</button>
+                    
                     <button onClick={() => deleteImage(image)}>delete image</button>
                 </div>
             ))}
