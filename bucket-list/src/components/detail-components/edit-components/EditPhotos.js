@@ -3,7 +3,7 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth.js';
 
 
 const initialImage = {
-    image: ''
+    photo: ''
 };
 
 const EditPhotos = ({ images, setImages }) => {
@@ -45,7 +45,8 @@ const EditPhotos = ({ images, setImages }) => {
             <>
             {images.map(image => (
                 <div key={image.id} onClick={() => editImage(image)}>
-                    <img src={image.photo} alt={image.title} width={"300px"} />
+                    <p>image</p>
+                    {/* <img src={image.photo} alt={image.title} width={"300px"} /> */}
                     <button onClick={() => deleteImage(image)}>delete image</button>
                 </div>
             ))}

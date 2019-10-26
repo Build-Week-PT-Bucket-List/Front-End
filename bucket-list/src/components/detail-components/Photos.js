@@ -27,11 +27,11 @@ function Photos(props) {
 
   return (
     <ImgGrid className="post-images">
-      {/* {
+      {
         images.map(image => {
           return <ImgCard key={image.id} className="post-img" src={image.photo} alt={image.title} />
         })
-      } */}
+      }
       <EditPhotos images={images} setImages={setImages} />
     </ImgGrid>  )
 }
