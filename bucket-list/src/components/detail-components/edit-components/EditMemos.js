@@ -55,7 +55,7 @@ const EditMemos = ({ memos, setMemos }) => {
                     <label>
                     memo:
                         <input
-                        value={memoToEdit.image}
+                        value={memoToEdit.url}
                         onChange={e => setMemoToEdit({ ...memoToEdit, memo: e.target.value})}
                         />
                     </label>

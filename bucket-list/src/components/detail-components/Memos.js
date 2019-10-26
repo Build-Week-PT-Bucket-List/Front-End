@@ -18,11 +18,11 @@ function Memo(props) {
 
   return (
     <ul>
-      {
+      {/* {
         memos.map(memo => {
           return <li><a href={memo.url}>{memo.url}</a></li>
         })
-      }
+      } */}
       <EditMemo memos={memos} setMemos={setMemos} />
     </ul>
   )
